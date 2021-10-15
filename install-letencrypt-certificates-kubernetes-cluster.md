@@ -98,7 +98,15 @@ If you want to completely uninstall cert-manager from your cluster, you will als
 $ kubectl delete -f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.crds.yaml
 
 
+# Issues and possible resolutions
 
+# 1. on digital ocean kubernetes cluster, encountered the error :  self-check failed
+
+# resolution
+
+edit ingress service and add the below and annotations 
+
+service.beta.kubernetes.io/do-loadbalancer-hostname: "dm.example.com" #
 
 
 
