@@ -51,6 +51,27 @@ documentation:
 
 # setup issuer to issue TLS certificates
 
+Create an issuer that issues Let's Encrypt certificates
+# prod-issuer.yaml
+
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    # Email address used for ACME registration
+    email: email@email.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      # Name of a secret used to store the ACME account private key
+      name: letsencrypt-prod-private-key
+    # Add a single challenge solver, HTTP01 using nginx
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+
 
 
 # Uninstall the chart
