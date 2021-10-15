@@ -112,7 +112,14 @@ service.beta.kubernetes.io/do-loadbalancer-hostname: "dm.example.com" #
 
 # REFERENCES
 
+https://www.digitalocean.com/community/questions/issue-with-waiting-for-http-01-challenge-propagation-failed-to-perform-self-check-get-request-from-acme-challenges
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-with-cert-manager-on-digitalocean-kubernetes#step-5-%E2%80%94-enabling-pod-communication-through-the-load-balancer-optional
+
 https://artifacthub.io/packages/helm/cert-manager/cert-manager?modal=security-report
 
 
 https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-on-digitalocean-kubernetes-using-helm 
+
+
+https://www.fairwinds.com/blog/automated-ssl-certs-for-kubernetes-with-letsencrypt-and-cert-manager 
