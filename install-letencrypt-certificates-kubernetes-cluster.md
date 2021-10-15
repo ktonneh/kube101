@@ -81,6 +81,12 @@ You also provide email to be notified of urgent notices e.g certificate expiry.
 
 $ kubectl apply -f prod-issuer.yaml
 
+
+
+# delete a certificate from kubernetes cluster
+
+kubectl delete certificates cert-name
+
 # Uninstall the chart
 
 $ helm delete my-release
