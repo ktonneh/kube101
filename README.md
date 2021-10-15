@@ -53,6 +53,7 @@ For information on how to configure cert-manager to automatically provision
 Certificates for Ingress resources, take a look at the `ingress-shim`
 documentation:
 
+# setup issuer to issue TLS certificates
 
 # Uninstall the chart
 
@@ -63,6 +64,11 @@ The command removes all the Kubernetes components associated with the chart and 
 If you want to completely uninstall cert-manager from your cluster, you will also need to delete the previously installed CustomResourceDefinition resources:
 
 $ kubectl delete -f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.crds.yaml
+
+
+
+
+
 
 # REFERENCES
 
