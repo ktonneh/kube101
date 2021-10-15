@@ -27,7 +27,7 @@ while running the above command got error '''Error: INSTALLATION FAILED: cannot 
 
 To Resolve, run
 
-# helm upgrade --install cert-manager --namespace cert-manager --version v1.5.4 jetstack/cert-manager
+$ helm upgrade --install cert-manager --namespace cert-manager --version v1.5.4 jetstack/cert-manager
 
 # success
 
