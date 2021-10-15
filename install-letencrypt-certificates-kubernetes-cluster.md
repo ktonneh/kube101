@@ -123,3 +123,5 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-
 
 
 https://www.fairwinds.com/blog/automated-ssl-certs-for-kubernetes-with-letsencrypt-and-cert-manager 
+
+https://www.digitalocean.com/community/questions/let-s-encrypt-on-load-balancer-and-ingress-k8s 
