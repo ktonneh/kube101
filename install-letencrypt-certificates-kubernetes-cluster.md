@@ -73,6 +73,13 @@ spec:
           class: nginx
 
 
+Above config defines a ClusterIssuer that contacts Let's Encrypt in order to issue certificates.
+
+You also provide email to be notified of urgent notices e.g certificate expiry.
+
+# Roll it out with kubectl
+
+$ kubectl apply -f prod-issuer.yaml
 
 # Uninstall the chart
 
