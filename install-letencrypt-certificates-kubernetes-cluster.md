@@ -1,29 +1,29 @@
 # Installing ca-certs on kubernetes cluster with Helm
 
-kubectl create namespace cert-manager
+`$ kubectl create namespace cert-manager`
 
 Before installing the chart, you must first install the cert-manager CustomResourceDefinition resources. 
 
 This is performed in a separate step to allow you to easily uninstall and reinstall cert-manager without deleting your installed custom resources.
 
-$ kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.crds.yaml
+`$ kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.crds.yaml`
 
 
 # Add the Jetstack Helm repository
 
-$ helm repo add jetstack https://charts.jetstack.io
+`$ helm repo add jetstack https://charts.jetstack.io`
 
-$ helm repo update
+`$ helm repo update`
 
 
 ## Install the cert-manager helm chart
-$ helm install cert-manager --namespace cert-manager --version v1.5.4 jetstack/cert-manager
+`$ helm install cert-manager --namespace cert-manager --version v1.5.4 jetstack/cert-manager`
 
 while running the above command got error '''Error: INSTALLATION FAILED: cannot re-use a name that is still in use'''
 
 To Resolve, run
 
-$ helm upgrade --install cert-manager --namespace cert-manager --version v1.5.4 jetstack/cert-manager
+`$ helm upgrade --install cert-manager --namespace cert-manager --version v1.5.4 jetstack/cert-manager`
 
 # success
 
@@ -52,7 +52,7 @@ documentation:
 # setup issuer to issue TLS certificates
 
 Create an issuer that issues Let's Encrypt certificates
-# prod-issuer.yaml
+# `prod-issuer.yaml`
 
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -79,11 +79,11 @@ You also provide email to be notified of urgent notices e.g certificate expiry.
 
 # Roll it out with kubectl
 
-$ kubectl apply -f prod-issuer.yaml
+`$ kubectl apply -f prod-issuer.yaml`
 
 
 # sample ingress
-# example-app-ingress.yaml
+`# example-app-ingress.yaml`
 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -111,7 +111,7 @@ spec:
 
 # check certificate status
 
-kubectl describe certificate cert-name
+`kubectl describe certificate cert-name`
 
 # output
 
@@ -124,11 +124,11 @@ kubectl describe certificate cert-name
 
 # delete a certificate from kubernetes cluster
 
-kubectl delete certificates cert-name
+`kubectl delete certificates cert-name`
 
 # Uninstall the chart
 
-$ helm delete my-release
+`$ helm delete my-release`
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
@@ -145,7 +145,7 @@ $ kubectl delete -f https://github.com/jetstack/cert-manager/releases/download/v
 
 edit ingress service and add the below and annotations 
 
-service.beta.kubernetes.io/do-loadbalancer-hostname: "dm.example.com" #
+`service.beta.kubernetes.io/do-loadbalancer-hostname: "dm.example.com" #`
 
 
 
