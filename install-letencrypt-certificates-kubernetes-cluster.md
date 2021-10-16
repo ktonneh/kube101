@@ -82,6 +82,45 @@ You also provide email to be notified of urgent notices e.g certificate expiry.
 $ kubectl apply -f prod-issuer.yaml
 
 
+# sample ingress
+# example-app-ingress.yaml
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - exampleapp.domain.com
+    secretName: example-app-tls
+  rules:
+  - host: "exampleapp.domain.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: example-service
+            port:
+              number: 80
+
+# check certificate status
+
+kubectl describe certificate cert-name
+
+# output
+
+  Type    Reason     Age    From          Message
+  ----    ------     ----   ----          -------
+  Normal  Issuing    4m14s  cert-manager  Issuing certificate as Secret does not exist
+  Normal  Generated  4m13s  cert-manager  Stored new private key in temporary Secret resource "cert-name-tls-5xcmd"
+  Normal  Requested  4m13s  cert-manager  Created new CertificateRequest resource "cert-name-tls-x8mcx"
+  Normal  Issuing    2m25s  cert-manager  The certificate has been successfully issued
 
 # delete a certificate from kubernetes cluster
 
